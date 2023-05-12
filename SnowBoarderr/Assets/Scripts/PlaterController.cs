@@ -10,6 +10,7 @@ public class PlaterController : MonoBehaviour
     [SerializeField] float baseSpeed = 20f;
     Rigidbody2D rb2d;
     SurfaceEffector2D surfaceEffector2D;
+    bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,17 @@ public class PlaterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotatePlayer();
+        if (canMove)
+        {
+            RotatePlayer();
+
+        }
         RespondToBoost();
+    }
+
+    public void DisableControls()
+    {
+        canMove=false;
     }
 
     void RespondToBoost()
